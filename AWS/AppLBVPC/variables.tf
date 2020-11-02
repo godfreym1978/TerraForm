@@ -75,4 +75,13 @@ variable "vpcPubRT" {
 variable "vpcPrivRT" {
     default = "Private_RT"
 }
+
+variable "alb_listener_port" {
+    default = "80"
+}
+variable "alb_listener_protocol" {
+    default = "tcp"
+}
+
+
 # end of variables.tf
