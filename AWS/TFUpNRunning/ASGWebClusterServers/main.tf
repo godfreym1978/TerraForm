@@ -6,10 +6,10 @@ data "aws_availability_zones" "all" {}
 
 resource "aws_autoscaling_group" "Web_Srv_ASG"{
     
-    launch_configuration = "${aws_launch_configuration.Web_Srv_EC2.id}"
-    availability_zones = ["${data.aws_availability_zones.all.names[0]}", "${data.aws_availability_zones.all.names[1]}"]
+    launch_configuration = aws_launch_configuration.Web_Srv_EC2.id
+    availability_zones = [data.aws_availability_zones.all.names[0], data.aws_availability_zones.all.names[1]]
 
-    load_balancers = ["${aws_elb.Web_Srv_ELB.name}"]
+    load_balancers = [aws_elb.Web_Srv_ELB.name]
     min_size = 2
     max_size = 10
 
@@ -23,7 +23,7 @@ resource "aws_autoscaling_group" "Web_Srv_ASG"{
 resource "aws_launch_configuration" "Web_Srv_EC2"{
     image_id = "ami-028f0daffc74d96ee"
     instance_type = "t2.micro"
-    security_groups = ["${aws_security_group.Web_Srv_SG.id}"]
+    security_groups = [aws_security_group.Web_Srv_SG.id]
     #to utilize the varaiables make sure that variable.tf file is created
     user_data = <<-EOF
         #!/bin/bash
@@ -57,8 +57,8 @@ resource "aws_security_group" "Web_Srv_SG"{
 
 resource "aws_elb" "Web_Srv_ELB" {
     name = "Web-Srv-ELB"
-    availability_zones = ["${data.aws_availability_zones.all.names[0]}", "${data.aws_availability_zones.all.names[1]}"]
-    security_groups = ["${aws_security_group.Web_Srv_Elb_SG.id}"]
+    availability_zones = [data.aws_availability_zones.all.names[0], data.aws_availability_zones.all.names[1]]
+    security_groups = [aws_security_group.Web_Srv_Elb_SG.id]
 
     listener{
         lb_port = 80
