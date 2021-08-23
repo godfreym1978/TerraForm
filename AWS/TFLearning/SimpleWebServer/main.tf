@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "Web_Srv_EC2"{
     ami = "ami-028f0daffc74d96ee"
     instance_type = "t2.micro"
-    vpc_security_group_ids = [aws_security_group.Web_Srv_SG.id]
+ terraform    vpc_security_group_ids = [aws_security_group.Web_Srv_SG.id]
     #to utilize the varaiables make sure that variable.tf file is created
     user_data = <<-EOF
         #!/bin/bash
