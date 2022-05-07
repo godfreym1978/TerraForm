@@ -1,7 +1,17 @@
 # [START cloudvpn_ha_gcp_to_gcp]
 
 provider "google" {
-  project     = "gpm-prj-1"
+  project     = "ornate-shine-349423"
+}
+
+data "terraform_remote_state" "db" {
+  backend = "gcs"
+  config = {
+    # Replace this with your bucket name!
+    bucket  = "gpm-gcp-tf-state"
+    #key    = "terraform/state/default.tfstate"
+    #region = "us-east-2"
+  }
 }
 
 resource "google_compute_ha_vpn_gateway" "ha_gateway1" {
