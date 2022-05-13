@@ -6,7 +6,7 @@ steps:
   - name: 'bash'
     args: ['pwd']    
   - name: 'bash'
-    args: ['ls -ltr']    
+    args: ["-c","ls -ltr"]    
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
