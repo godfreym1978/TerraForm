@@ -2,7 +2,7 @@ steps:
   - id: 'tf init'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
-    args: ["-c","terraform init -upgrade -chdir=GCP/create-ha-vpn-comm"]
+    args: ["-c","terraform init -upgrade "]
   - name: 'bash'
     args: ['pwd']    
   - name: 'bash'
