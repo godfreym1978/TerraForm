@@ -3,6 +3,10 @@ steps:
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
     args: ["-c","terraform init -upgrade"]
+  - name: 'bash'
+    args: ['pwd']    
+  - name: 'bash'
+    args: ['ls -ltr']    
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
