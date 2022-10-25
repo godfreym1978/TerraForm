@@ -1,7 +1,8 @@
 
 
 provider "google" {
-  project     = "arctic-robot-361223"
+  #project     = "arctic-robot-361223"
+  project     = var.project
 }
 
 data "terraform_remote_state" "db" {
