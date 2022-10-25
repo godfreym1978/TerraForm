@@ -1,4 +1,7 @@
 
+variable "project" {
+  type        = string
+ }
 
 provider "google" {
   #project     = "arctic-robot-361223"
