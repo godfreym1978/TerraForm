@@ -1,7 +1,4 @@
 
-variable "project" {
-  type        = string
- }
 
 provider "google" {
   #project     = "arctic-robot-361223"
@@ -19,5 +16,5 @@ data "terraform_remote_state" "db" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name = "vpc-network"
+  name = var.vpc
 }
